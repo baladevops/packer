@@ -94,6 +94,16 @@ builder.
     Packer to wait for 1 minute 30 seconds before typing the boot command.
     The default duration is "10s" (10 seconds).
 
+-   `copy_in_compare` - When cloning a vm to build from, we run a powershell
+    Compare-VM command, which, depending on your version of Windows, may need
+    the "Copy" flag to be set to true or false. Defaults to "false". Command:
+
+    `$compatibilityReport = Hyper-V\Compare-VM -Path $VirtualMachinePath -VirtualMachinePath $importPath -SmartPagingFilePath $importPath -SnapshotFilePath $importPath -VhdDestinationPath $VirtualHarddisksPath -GenerateNewId -Copy:$copy`
+
+    Where $copy is replaced with either true or false depending on the value of
+    "copy_in_compare".
+
+
 -   `cpu` (number) - The number of CPUs the virtual machine should use. If
     this isn't specified, the default is 1 CPU.
 
